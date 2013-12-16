@@ -1,0 +1,17 @@
+cd /home/user/ngn-env
+git fetch origin
+git reset --hard origin/master
+
+cd /home/user/ngn-env/ngn
+git fetch origin
+git reset --hard origin/master
+
+cd /home/user/ngn-env/run
+git fetch origin
+git reset --hard origin/master
+
+cd /home/user/ngn-env/sb
+git fetch origin
+git reset --hard origin/master
+
+#php /home/user/ngn-env/pm.php localProjects updateIndex
