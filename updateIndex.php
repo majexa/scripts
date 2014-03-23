@@ -1,5 +1,6 @@
 <?php
 
+throw new Exception('depricated');
 $ngnEnvFolder = dirname(__DIR__);
 $copy = function($folder, $name, $force = false) use ($ngnEnvFolder) {
   if (!file_exists("$folder/$name.php")) {
