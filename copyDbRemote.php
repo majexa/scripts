@@ -1,11 +1,13 @@
 <?php
 
+function setConstant($k, $v) { define($k, $v); }
 $c = include dirname(__DIR__).'/config/server.php';
+if (!isset($c['dbUser'])) $c['dbUser'] = 'root';
 if (empty($_SERVER['argv'][1])) die('Syntax: '.basename(__FILE__)." dbName host [port] [password]\n");
 if (empty($_SERVER['argv'][2])) die('Syntax: '.basename(__FILE__)." dbName host [port] [password]\n");
 $dbName = $_SERVER['argv'][1];
 $host = $_SERVER['argv'][2];
-$port = $_SERVER['argv'][3];
+$port = isset($_SERVER['argv'][3]) ? $_SERVER['argv'][3] : 22;
 `mysqldump -u{$c['dbUser']} -p{$c['dbPass']} {$dbName} > /tmp/$dbName.sql`;
 `scp -P $port /tmp/$dbName.sql user@$host:/tmp/$dbName.sql`;
 `rm /tmp/$dbName.sql`;
